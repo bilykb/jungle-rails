@@ -30,34 +30,47 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <% if current_user %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-          <span class="text-primary"><%= fa_icon 'users', text: 'User' %></span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to 'Login', [:root] %></li>
-          <li><%= link_to 'Register',  [:new_user] %></li>
-        </ul>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <span class="text-success"><%= fa_icon 'user-circle-o', text: "#{current_user.first_name} #{current_user.last_name}" %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'logout', logout_path %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 
-          <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to 'Dashboard', [:admin, :root] %></li>
-          <li><%= link_to 'Products',  [:admin, :products] %></li>
-          <li><%= link_to 'Categories', [:admin, :categories] %></li>
-        </ul>
-      </li>
-      <li>
-        <%= link_to cart_path do %>
-          <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+              <span class="text-primary"><%= fa_icon 'users', text: 'User' %></span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Login', [:new_session] %></li>
+              <li><%= link_to 'Register',  [:new_user] %></li>
+            </ul>
+          </li>
         <% end %>
-      </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+            <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Dashboard', [:admin, :root] %></li>
+            <li><%= link_to 'Products',  [:admin, :products] %></li>
+            <li><%= link_to 'Categories', [:admin, :categories] %></li>
+          </ul>
+        </li>
+        <li>
+          <%= link_to cart_path do %>
+            <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
