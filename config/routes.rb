@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   #user creation
   resources :users, only: [:new, :create]
 
+  #user session / login logout
+  resources :sessions, only: [:new, :create]
+  get '/logout' => 'sessions#destroy'
+
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
