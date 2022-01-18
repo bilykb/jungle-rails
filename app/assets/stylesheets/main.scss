@@ -1,15 +1,16 @@
 main section.products-index,
 main section.dashboard-index,
 main section.categories-index,
+main section.sales-index,
 main section.categories-show {
 
-  .products, .categories {
+  .products, .categories, .sales {
     display:         flex;
     flex-direction:  row;
     flex-wrap:       wrap;
     justify-content: space-around;
 
-    .product, .category {
+    .product, .category, .sale {
       // flex:      1;
       max-width: 260px;
       // so that footer within can be positioned absolutely
