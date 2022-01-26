@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
 
         expect(second_user.errors.full_messages).to eq(["Email has already been taken"])
       end
+
+      it "fails to create a new user if the password length is < 5" do
+        user = User.create(email: "fun_stuff@gmail.com", password: "pass", password_confirmation: "pass")
+
+        expect(user.errors.full_messages.first).to eq("Password is too short (minimum is 5 characters)")
+      end
     end
   end
 end
