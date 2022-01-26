@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/'
     else
-      flash[:error] = @user.errors.full_messages.first
+      flash[:error] = @user.errors.full_messages
       redirect_to '/users/new'
     end
   end

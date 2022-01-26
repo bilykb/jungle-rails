@@ -11,7 +11,9 @@
         <% if flash[:error] %>
           <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
-                <div><%= flash[:error] %></div>
+              <% flash[:error].each do |error| %>
+                <div><%= error %></div>
+              <% end %>
           </div>
         <% end %>
 
