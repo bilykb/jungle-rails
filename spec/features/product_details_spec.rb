@@ -20,7 +20,13 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
   scenario "they see a single products info" do
     visit root_path
 
+    first(".product").click_on "Details"
 
+    sleep 5
+
+    save_screenshot
+
+    expect(page).to have_css 'section.products-show', count: 1
   end
 
 end
